@@ -1,0 +1,9 @@
+{
+  "name": "KAGA SPA 100K Dashboard",
+  "short_name": "KAGA SPA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121820",
+  "theme_color": "#121820",
+  "lang": "ja"
+}

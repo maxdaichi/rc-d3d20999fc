@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#121820">
+<link rel="manifest" href="manifest.webmanifest">
+<title>KAGA SPA 100K 2026 当日ダッシュボード v2</title>
+<style>
+
+:root{--bg:#121820;--panel:#19222d;--panel2:#202b38;--line:#354453;--text:#eef4f8;--muted:#aeb8c2;--green:#42d77d;--orange:#ffb545;--red:#ff5f66;--blue:#65a8ff;--teal:#31c7bd;--navy:#24365b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",sans-serif;line-height:1.5;-webkit-text-size-adjust:100%}
+button{font:inherit}.top-note{position:sticky;top:0;z-index:5;background:#0d1117;color:#d8e1ea;border-bottom:1px solid var(--line);padding:7px 12px;text-align:center;font-size:.78rem}.wrap{max-width:1120px;margin:0 auto;padding:14px 12px 56px}.hero{background:linear-gradient(180deg,#1d2733,#141b24);border:2px solid #435466;border-radius:8px;padding:16px;margin-bottom:18px}.kicker,.subtle{color:var(--muted);font-size:.86rem}.hero h1{font-size:clamp(1.55rem,4.5vw,2.7rem);line-height:1.1;margin:.2rem 0 .5rem;letter-spacing:0}.lead{margin:0 0 14px;color:#d7e0e8;font-weight:700}.mode-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.mode-btn,.cp-btn{min-height:48px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text);font-weight:800}.mode-btn.active,.cp-btn.active{outline:3px solid var(--blue);background:#26384d}.mode-btn[data-mode=hot].active{outline-color:var(--red);background:#40242a}.hot-warning{border:2px solid var(--red);background:rgba(255,95,102,.12);border-radius:8px;padding:10px;font-weight:900;margin-bottom:12px}.select-title{font-size:.92rem;color:var(--muted);margin-bottom:8px}.cp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}@media(max-width:720px){.cp-grid{grid-template-columns:repeat(3,1fr)}}.glance{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;margin:16px 0}.label{display:block;color:var(--muted);font-size:.78rem}.next-name{font-size:clamp(2rem,7vw,4.4rem);font-weight:950;line-height:1.02}.metric{background:#101720;border:1px solid var(--line);border-radius:8px;padding:10px}.metric strong{font-size:clamp(1.25rem,4vw,2.5rem);line-height:1.08}.metric.margin.green{border-color:var(--green);color:var(--green)}.metric.margin.orange{border-color:var(--orange);color:var(--orange)}.metric.margin.red{border-color:var(--red);color:var(--red)}@media(max-width:820px){.glance{grid-template-columns:1fr 1fr}.glance>div:first-child{grid-column:1/-1}}.action-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}.action-card{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:12px}.action-card h2{font-size:1rem;margin:0 0 8px}.immediate{border-color:var(--orange);background:rgba(255,181,69,.10)}.action-card p{margin:0;font-size:1.05rem;font-weight:800}.action-card dl{margin:0}.action-card dt{color:var(--muted);font-size:.78rem}.action-card dd{margin:0 0 6px;font-weight:800}@media(max-width:820px){.action-grid{grid-template-columns:1fr}}h2{letter-spacing:0}.section-guide,.reference{margin-top:24px}.section-guide>h2,.reference>h2{font-size:1.5rem;margin:0 0 4px}.legs{display:grid;gap:10px;margin-top:12px}.leg-card{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:12px}.leg-card.current{border-width:3px;border-color:var(--blue);box-shadow:0 0 0 2px rgba(101,168,255,.25)}.leg-card.night{border-left:7px solid var(--navy)}.leg-card.dawn{border-left:7px solid var(--teal)}.leg-card.heat{border-left:7px solid var(--red)}.leg-card.eve{border-left:7px solid var(--orange)}.leg-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.leg-no{background:#0f151d;border:1px solid var(--line);border-radius:6px;padding:3px 7px;color:var(--muted)}.leg-head h3{font-size:1.15rem;margin:0;flex:1}.period{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--muted)}.spark-wrap{margin:8px 0}.spark{width:100%;height:46px;background:#101720;border-radius:6px}.spark polyline{stroke:#d5e8ff;stroke-width:3}.leg-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.leg-metrics span{background:#101720;border:1px solid var(--line);border-radius:6px;padding:6px;font-size:.82rem}.leg-main p{margin:.45rem 0}@media(max-width:820px){.leg-metrics{grid-template-columns:1fr 1fr}.leg-card.current .leg-head h3{font-size:1.55rem}.leg-card.current .leg-main p{font-size:1.05rem}}body.mode-mod .hot-only{display:none}details{border:1px solid var(--line);background:var(--panel);border-radius:8px;margin:10px 0;padding:10px}summary{cursor:pointer;font-weight:900;font-size:1.05rem}.profile,.route{width:100%;height:auto;margin-top:10px;background:#101720;border-radius:8px}.profile-line{stroke:#f4f7fb;stroke-width:3}.cp-line{stroke:rgba(255,255,255,.35);stroke-width:1}.cp-label{fill:#cbd6df;font-size:11px;text-anchor:middle}.peak-label{fill:#fff;font-size:14px;font-weight:800}.shade{opacity:.22}.shade.night{fill:#24365b}.shade.dawn{fill:#1a7f78}.shade.heat{fill:#b73540}.shade.eve{fill:#c47a28}.legend{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.82rem}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:720px}th,td{border-bottom:1px solid var(--line);padding:8px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:var(--muted);background:#101720}.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.ref-box{background:#101720;border:1px solid var(--line);border-radius:8px;padding:10px}.ref-box h3{margin:0 0 6px}.ref-box p{margin:0}.decision li{margin:.35rem 0}.route-line{stroke:#9fd0ff;stroke-width:3}.route-dot{fill:#ffcf5a;stroke:#111;stroke-width:1.5}footer{color:var(--muted);border-top:1px solid var(--line);margin-top:22px;padding-top:12px;font-size:.8rem}@media(max-width:820px){.ref-grid{grid-template-columns:1fr}.hero{padding:12px}.metric strong{font-size:1.4rem}}
+
+</style>
+</head>
+<body>
+<!--
+Progressive/offline design:
+All race data, CP table, fueling, section guide, profile SVG, and route SVG are static HTML.
+Inline JavaScript only enhances manual CP selection, mode switching, and race-day time hints.
+With JavaScript disabled, START-based top guidance and every reference section remain readable.
+Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
+-->
+<header class="top-note">レース前にスマホ保存→Safari/Chromeで開く→機内モードで開けるか検証</header>
+<main class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="kicker">完全オフライン / GPS不使用 / W2≈18:47推定</div>
+    <h1 id="hero-title">KAGA SPA 100K 当日ダッシュボード v2</h1>
+    <p class="lead">中庸ペースなら居るはずの目安。正確な現在地は標識/GPS時計で。W2≈18:47は推定。</p>
+
+    <div class="mode-bar" aria-label="モード切替">
+      <button type="button" class="mode-btn active" data-mode="mod">中庸</button>
+      <button type="button" class="mode-btn" data-mode="hot">猛暑</button>
+    </div>
+    <div id="hot-warning" class="hot-warning" hidden>猛暑中心はFIN 22:18でDNF。CP2を12:00以降なら完走計画を捨て、関門サバイバルへ。</div>
+
+    <div class="cp-select" aria-label="最後に通過したCP/AS">
+      <div class="select-title">最後に通過したCP/AS</div>
+      <div class="cp-grid"><button class="cp-btn" type="button" data-cp="START">START</button>
+<button class="cp-btn" type="button" data-cp="AS1">AS1</button>
+<button class="cp-btn" type="button" data-cp="AS2">AS2</button>
+<button class="cp-btn" type="button" data-cp="AS3">AS3</button>
+<button class="cp-btn" type="button" data-cp="CP1">CP1</button>
+<button class="cp-btn" type="button" data-cp="AS5">AS5</button>
+<button class="cp-btn" type="button" data-cp="AS6">AS6</button>
+<button class="cp-btn" type="button" data-cp="CP2">CP2</button>
+<button class="cp-btn" type="button" data-cp="AS8">AS8</button>
+<button class="cp-btn" type="button" data-cp="CP3">CP3</button>
+<button class="cp-btn" type="button" data-cp="CP4">CP4</button>
+<button class="cp-btn" type="button" data-cp="FIN">FIN</button></div>
+    </div>
+
+    <div class="glance" id="glance">
+      <div>
+        <div class="label">次AS/CP</div>
+        <div class="next-name" id="next-name">AS1 刈安山</div>
+      </div>
+      <div class="metric">
+        <span class="label">残り</span>
+        <strong id="remain-km">8.7km</strong>
+      </div>
+      <div class="metric">
+        <span class="label">目標到着</span>
+        <strong id="target-arrival">20:46</strong>
+      </div>
+      <div class="metric">
+        <span class="label">関門</span>
+        <strong id="cutoff">関門なし</strong>
+      </div>
+      <div class="metric margin neutral" id="margin-box">
+        <span class="label">余裕/遅れ</span>
+        <strong id="margin">関門なし</strong>
+      </div>
+    </div>
+
+    <div class="action-grid">
+      <section class="action-card immediate">
+        <h2>今すぐやる</h2>
+        <p id="now-action">抑えて入る。START 1.5-2L。胃を止めず、心拍を上げない。</p>
+      </section>
+      <section class="action-card">
+        <h2>現在区間</h2>
+        <dl>
+          <div><dt>残D+</dt><dd id="remain-dplus">659m</dd></div>
+          <div><dt>次ピーク</dt><dd id="next-peak">刈安山付近 / 520m / あと約8.7km以内</dd></div>
+          <div><dt>危険</dt><dd id="danger">急登林道</dd></div>
+        </dl>
+      </section>
+      <section class="action-card hint">
+        <h2>時刻ヒント</h2>
+        <p id="time-hint">当日のみ補助表示。手動選択が主。</p>
+      </section>
+    </div>
+  </section>
+
+  <section class="section-guide" aria-labelledby="guide-title">
+    <h2 id="guide-title">区間ガイド</h2>
+    <p class="subtle">11区間を常時表示。手動選択時は現在区間だけ強調される。</p>
+    <div class="legs"><article class="leg-card night" data-leg="START">
+  <div class="leg-head">
+    <span class="leg-no">#1</span>
+    <h3>START→AS1刈安山</h3>
+    <span class="period">夜</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,36.0 13.4,35.2 16.8,34.6 20.2,34.1 23.6,33.8 27.0,33.8 30.4,34.4 33.8,35.3 37.2,35.8 40.6,35.7 44.0,34.7 47.4,33.7 50.9,33.2 54.3,31.3 57.7,30.4 61.1,30.8 64.5,29.3 67.9,27.4 71.3,24.6 74.7,21.8 78.1,20.3 81.5,21.0 84.9,20.6 88.3,20.1 91.7,20.8 95.1,20.6 98.5,18.7 101.9,15.4 105.3,15.5 108.7,15.5 112.1,14.6 115.5,13.2 118.9,12.6 122.3,12.5 125.7,12.7 129.1,14.3 132.6,15.8 136.0,15.0 139.4,14.8 142.8,16.1 146.2,13.1 149.6,12.5 153.0,13.5 156.4,14.3 159.8,14.2 163.2,12.5 166.6,10.8 170.0,10.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>0-8.7km</span><span>GPX 0-8.43</span><span>D+ 659 / D- 217</span>
+    <span>中庸 13.7 min/km</span><span class="hot-only">猛暑着 20:46</span><span>関門 —</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> 520m <span class="subtle">(GPX区間最大 520m)</span></p>
+    <p><b>水</b> START 1.5-2L / <b>今やる</b> 抑えて入る</p>
+    <p><b>マントラ</b> ウォームアップ。心拍上げない</p>
+    <p><b>危険</b> 急登林道</p>
+  </div>
+</article>
+<article class="leg-card night" data-leg="AS1">
+  <div class="leg-head">
+    <span class="leg-no">#2</span>
+    <h3>AS1→AS2大内</h3>
+    <span class="period">夜</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,10.0 13.4,10.1 16.8,10.9 20.2,11.5 23.6,11.6 27.0,12.1 30.4,12.6 33.8,11.6 37.2,11.9 40.6,15.5 44.0,18.6 47.4,22.2 50.9,25.1 54.3,26.9 57.7,28.1 61.1,30.1 64.5,31.8 67.9,32.7 71.3,33.1 74.7,33.3 78.1,34.1 81.5,35.1 84.9,36.0 88.3,35.6 91.7,35.0 95.1,34.6 98.5,34.8 101.9,35.2 105.3,35.5 108.7,35.5 112.1,35.2 115.5,35.2 118.9,35.3 122.3,35.2 125.7,34.2 129.1,33.2 132.6,33.2 136.0,33.1 139.4,32.4 142.8,31.6 146.2,30.8 149.6,30.1 153.0,29.7 156.4,29.3 159.8,28.8 163.2,28.5 166.6,28.6 170.0,28.8" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>8.7-16.7km</span><span>GPX 8.43-16.17</span><span>D+ 141 / D- 405</span>
+    <span>中庸 11.3 min/km</span><span class="hot-only">猛暑着 22:16</span><span>関門 —</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> — <span class="subtle">(GPX区間最大 520m)</span></p>
+    <p><b>水</b> 大内 1.5-2L+コーラ / <b>今やる</b> 省エネ</p>
+    <p><b>マントラ</b> 走れる。リズムだけ</p>
+    <p><b>危険</b> —</p>
+  </div>
+</article>
+<article class="leg-card night" data-leg="AS2">
+  <div class="leg-head">
+    <span class="leg-no">#3</span>
+    <h3>AS2→AS3九谷ダム</h3>
+    <span class="period">深夜</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,33.3 13.4,32.8 16.8,31.7 20.2,31.4 23.6,29.8 27.0,29.5 30.4,26.8 33.8,25.2 37.2,24.6 40.6,22.5 44.0,19.9 47.4,18.0 50.9,17.4 54.3,16.3 57.7,15.2 61.1,15.4 64.5,12.8 67.9,11.3 71.3,11.1 74.7,12.0 78.1,11.5 81.5,12.8 84.9,14.7 88.3,15.7 91.7,18.2 95.1,17.1 98.5,16.5 101.9,15.3 105.3,12.3 108.7,11.1 112.1,10.2 115.5,10.0 118.9,10.9 122.3,10.5 125.7,13.4 129.1,15.3 132.6,18.0 136.0,20.3 139.4,21.9 142.8,22.9 146.2,25.6 149.6,27.8 153.0,29.0 156.4,31.8 159.8,34.0 163.2,35.9 166.6,35.9 170.0,36.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>16.7-27.1km</span><span>GPX 16.17-26.24</span><span>D+ 979 / D- 1058</span>
+    <span>中庸 15.8 min/km</span><span class="hot-only">猛暑着 01:00</span><span>関門 —</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> 富士写ヶ岳 930m <span class="subtle">(GPX区間最大 928m)</span></p>
+    <p><b>水</b> 満タン / <b>今やる</b> 脚を残す</p>
+    <p><b>マントラ</b> 重い。夜の涼を味方に</p>
+    <p><b>危険</b> ロープ場/雨で危険</p>
+  </div>
+</article>
+<article class="leg-card night" data-leg="AS3">
+  <div class="leg-head">
+    <span class="leg-no">#4</span>
+    <h3>AS3→CP1九谷親水</h3>
+    <span class="period">深夜</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,36.0 13.4,31.3 16.8,12.3 20.2,10.0 23.6,11.9 27.0,14.5 30.4,19.6 33.8,22.2 37.2,21.9 40.6,16.1 44.0,20.5 47.4,18.3 50.9,12.8 54.3,19.1 57.7,16.4 61.1,14.7 64.5,17.3 67.9,18.0 71.3,14.8 74.7,15.6 78.1,15.2 81.5,16.6 84.9,16.4 88.3,16.2 91.7,18.0 95.1,16.6 98.5,16.9 101.9,16.5 105.3,16.4 108.7,23.4 112.1,20.5 115.5,18.2 118.9,21.3 122.3,19.0 125.7,17.0 129.1,18.3 132.6,19.8 136.0,12.4 139.4,12.6 142.8,19.4 146.2,19.9 149.6,14.5 153.0,17.4 156.4,17.9 159.8,21.8 163.2,18.9 166.6,15.5 170.0,15.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>27.1-38.3km</span><span>GPX 26.24-37.09</span><span>D+ 227 / D- 177</span>
+    <span>中庸 11.1 min/km</span><span class="hot-only">猛暑着 03:05</span><span>関門 04:55</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> — <span class="subtle">(GPX区間最大 240m)</span></p>
+    <p><b>水</b> 水/胃/ライト確認 / <b>今やる</b> リズム</p>
+    <p><b>マントラ</b> 走れる林道ロード。追い込まない</p>
+    <p><b>危険</b> —</p>
+  </div>
+</article>
+<article class="leg-card dawn" data-leg="CP1">
+  <div class="leg-head">
+    <span class="leg-no">#5</span>
+    <h3>CP1→AS5真砂</h3>
+    <span class="period">未明</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,35.1 13.4,35.0 16.8,35.7 20.2,36.0 23.6,35.6 27.0,35.0 30.4,34.6 33.8,34.0 37.2,33.8 40.6,33.8 44.0,34.0 47.4,33.7 50.9,32.6 54.3,32.3 57.7,32.1 61.1,31.7 64.5,31.3 67.9,31.0 71.3,30.7 74.7,30.3 78.1,29.7 81.5,29.2 84.9,28.8 88.3,28.1 91.7,27.6 95.1,27.1 98.5,26.6 101.9,26.1 105.3,25.4 108.7,24.9 112.1,24.4 115.5,23.9 118.9,23.1 122.3,22.4 125.7,21.7 129.1,21.1 132.6,20.5 136.0,19.9 139.4,19.2 142.8,18.5 146.2,17.8 149.6,16.5 153.0,15.7 156.4,14.6 159.8,13.3 163.2,12.1 166.6,10.9 170.0,10.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>38.3-44.8km</span><span>GPX 37.09-43.39</span><span>D+ 272 / D- 13</span>
+    <span>中庸 14.0 min/km</span><span class="hot-only">猛暑着 04:38</span><span>関門 —</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> 高倉山 484m <span class="subtle">(GPX区間最大 485m)</span></p>
+    <p><b>水</b> 真砂 2.5-3L / <b>今やる</b> 一定で登る</p>
+    <p><b>マントラ</b> 高倉山は実は軽い。恐れない。ストック</p>
+    <p><b>危険</b> 急登だが短い</p>
+  </div>
+</article>
+<article class="leg-card heat" data-leg="AS5">
+  <div class="leg-head">
+    <span class="leg-no">#6</span>
+    <h3>AS5→AS6杉ノ木</h3>
+    <span class="period">朝→灼熱</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,35.0 13.4,34.1 16.8,33.3 20.2,32.3 23.6,29.9 27.0,28.5 30.4,26.1 33.8,23.8 37.2,23.0 40.6,20.7 44.0,19.2 47.4,16.7 50.9,14.1 54.3,11.4 57.7,13.2 61.1,13.1 64.5,11.0 67.9,10.0 71.3,12.3 74.7,14.2 78.1,15.5 81.5,17.2 84.9,16.5 88.3,15.2 91.7,16.0 95.1,19.2 98.5,20.4 101.9,22.6 105.3,22.3 108.7,23.3 112.1,24.6 115.5,25.2 118.9,23.6 122.3,25.0 125.7,25.5 129.1,26.7 132.6,26.9 136.0,27.0 139.4,27.1 142.8,27.1 146.2,27.8 149.6,28.2 153.0,31.2 156.4,31.5 159.8,32.9 163.2,33.7 166.6,35.1 170.0,36.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>44.8-60.2km</span><span>GPX 43.39-58.30</span><span>D+ 1255 / D- 1289</span>
+    <span>中庸 15.9 min/km</span><span class="hot-only">猛暑着 08:56</span><span>関門 —</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> 大日山 1367m <span class="subtle">(GPX区間最大 1361m)</span></p>
+    <p><b>水</b> 満タン+水かぶり / <b>今やる</b> 標高を稼ぐ</p>
+    <p><b>マントラ</b> 最長クライム。水2.5-3L死守</p>
+    <p><b>危険</b> 最暑帯入口</p>
+  </div>
+</article>
+<article class="leg-card heat" data-leg="AS6">
+  <div class="leg-head">
+    <span class="leg-no">#7</span>
+    <h3>AS6→CP2県民の森</h3>
+    <span class="period">灼熱</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,10.0 13.4,10.1 16.8,10.4 20.2,10.8 23.6,11.4 27.0,12.0 30.4,12.9 33.8,13.8 37.2,14.6 40.6,15.2 44.0,15.7 47.4,16.1 50.9,16.7 54.3,17.4 57.7,18.2 61.1,19.2 64.5,19.9 67.9,20.6 71.3,21.0 74.7,21.2 78.1,21.5 81.5,21.9 84.9,22.5 88.3,23.3 91.7,24.2 95.1,25.2 98.5,26.2 101.9,27.1 105.3,27.9 108.7,28.4 112.1,28.7 115.5,29.0 118.9,29.3 122.3,29.5 125.7,29.9 129.1,30.4 132.6,31.1 136.0,31.7 139.4,32.3 142.8,32.8 146.2,33.2 149.6,33.5 153.0,33.9 156.4,34.3 159.8,34.7 163.2,35.1 166.6,35.5 170.0,36.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>60.2-63.1km</span><span>GPX 58.30-61.11</span><span>D+ 0 / D- 113</span>
+    <span>中庸 12.8 min/km</span><span class="hot-only">猛暑着 09:45</span><span>関門 12:55</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> — <span class="subtle">(GPX区間最大 450m)</span></p>
+    <p><b>水</b> CP2 2.5L / <b>今やる</b> 突っ込む</p>
+    <p><b>マントラ</b> CP2は全て。胃を止めない</p>
+    <p><b>危険</b> DB唯一地点</p>
+  </div>
+</article>
+<article class="leg-card heat" data-leg="CP2">
+  <div class="leg-head">
+    <span class="leg-no">#8</span>
+    <h3>CP2→AS8今立</h3>
+    <span class="period">灼熱MAX</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,19.7 13.4,20.0 16.8,19.6 20.2,19.7 23.6,20.2 27.0,20.3 30.4,20.2 33.8,20.4 37.2,20.9 40.6,21.5 44.0,21.9 47.4,22.0 50.9,21.9 54.3,21.0 57.7,20.1 61.1,19.2 64.5,18.0 67.9,16.6 71.3,14.7 74.7,12.3 78.1,10.0 81.5,10.2 84.9,12.7 88.3,15.0 91.7,17.4 95.1,20.3 98.5,22.6 101.9,24.2 105.3,25.4 108.7,26.4 112.1,27.3 115.5,27.9 118.9,28.5 122.3,29.2 125.7,29.8 129.1,30.4 132.6,30.9 136.0,31.4 139.4,31.6 142.8,31.8 146.2,32.4 149.6,33.5 153.0,34.6 156.4,35.4 159.8,35.7 163.2,35.7 166.6,35.8 170.0,36.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>63.1-69.8km</span><span>GPX 61.11-67.60</span><span>D+ 185 / D- 408</span>
+    <span>中庸 18.8 min/km</span><span class="hot-only">猛暑着 12:20</span><span>関門 —</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> — <span class="subtle">(GPX区間最大 479m)</span></p>
+    <p><b>水</b> 満タン・日陰 / <b>今やる</b> 水かぶり機械的</p>
+    <p><b>マントラ</b> リセット完了。完走射程</p>
+    <p><b>危険</b> —</p>
+  </div>
+</article>
+<article class="leg-card heat" data-leg="AS8">
+  <div class="leg-head">
+    <span class="leg-no">#9</span>
+    <h3>AS8→CP3滝ヶ原</h3>
+    <span class="period">午後灼熱</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,34.3 13.4,34.2 16.8,34.4 20.2,34.7 23.6,35.0 27.0,35.2 30.4,33.2 33.8,31.4 37.2,31.1 40.6,30.7 44.0,28.0 47.4,24.1 50.9,21.8 54.3,18.5 57.7,17.2 61.1,16.9 64.5,14.8 67.9,16.0 71.3,17.4 74.7,18.1 78.1,15.1 81.5,15.5 84.9,14.4 88.3,14.5 91.7,14.4 95.1,17.5 98.5,15.3 101.9,10.0 105.3,12.2 108.7,11.5 112.1,12.1 115.5,12.9 118.9,15.6 122.3,14.7 125.7,13.4 129.1,14.6 132.6,18.6 136.0,25.1 139.4,29.2 142.8,31.1 146.2,32.6 149.6,33.4 153.0,34.0 156.4,34.7 159.8,35.1 163.2,35.7 166.6,35.8 170.0,36.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>69.8-81.7km</span><span>GPX 67.60-79.12</span><span>D+ 749 / D- 779</span>
+    <span>中庸 19.7 min/km</span><span class="hot-only">猛暑着 16:58</span><span>関門 17:55</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> 三童子山 539m <span class="subtle">(GPX区間最大 531m)</span></p>
+    <p><b>水</b> 満タン / <b>今やる</b> 時計より体</p>
+    <p><b>マントラ</b> 一番きつい時間帯。日陰で座ってでも前進</p>
+    <p><b>危険</b> ラスボス三童子山</p>
+  </div>
+</article>
+<article class="leg-card eve" data-leg="CP3">
+  <div class="leg-head">
+    <span class="leg-no">#10</span>
+    <h3>CP3→CP4塔尾</h3>
+    <span class="period">午後</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,33.4 13.4,33.9 16.8,34.5 20.2,35.0 23.6,34.5 27.0,33.5 30.4,33.0 33.8,32.9 37.2,32.8 40.6,32.8 44.0,32.6 47.4,31.7 50.9,31.4 54.3,30.3 57.7,30.1 61.1,27.6 64.5,24.9 67.9,22.5 71.3,20.8 74.7,20.4 78.1,17.0 81.5,11.8 84.9,10.0 88.3,10.6 91.7,10.9 95.1,15.3 98.5,19.0 101.9,19.3 105.3,18.7 108.7,19.3 112.1,21.3 115.5,24.2 118.9,24.4 122.3,26.6 125.7,28.7 129.1,31.0 132.6,32.4 136.0,32.9 139.4,33.4 142.8,33.6 146.2,33.9 149.6,34.5 153.0,34.8 156.4,34.9 159.8,35.0 163.2,35.1 166.6,35.4 170.0,36.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>81.7-90.2km</span><span>GPX 79.12-87.35</span><span>D+ 440 / D- 482</span>
+    <span>中庸 16.0 min/km</span><span class="hot-only">猛暑着 19:21</span><span>関門 19:55</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> — <span class="subtle">(GPX区間最大 455m)</span></p>
+    <p><b>水</b> 1-1.5L / <b>今やる</b> 攣り/転倒注意</p>
+    <p><b>マントラ</b> 完走ほぼ確定</p>
+    <p><b>危険</b> —</p>
+  </div>
+</article>
+<article class="leg-card eve" data-leg="CP4">
+  <div class="leg-head">
+    <span class="leg-no">#11</span>
+    <h3>CP4→FIN山中座</h3>
+    <span class="period">夕</span>
+  </div>
+  <div class="spark-wrap"><svg class="spark" viewBox="0 0 180 46" aria-hidden="true"><polyline points="10.0,35.3 13.4,36.0 16.8,35.8 20.2,33.9 23.6,32.2 27.0,31.8 30.4,31.5 33.8,30.8 37.2,29.5 40.7,28.8 44.1,29.0 47.5,28.3 50.9,27.0 54.3,26.0 57.7,25.1 61.1,23.1 64.5,22.4 67.9,21.0 71.3,16.6 74.7,15.3 78.1,15.7 81.5,14.2 84.9,12.5 88.3,12.7 91.7,10.0 95.1,11.4 98.5,16.0 102.0,20.4 105.4,22.8 108.8,24.6 112.2,26.9 115.6,29.9 119.0,32.3 122.4,32.3 125.8,31.6 129.2,31.2 132.6,31.9 136.0,31.6 139.4,30.2 142.8,31.2 146.2,31.1 149.6,30.3 153.0,30.4 156.4,29.8 159.9,29.6 163.3,30.1 166.7,30.6 170.0,31.0" fill="none"/></svg></div>
+  <div class="leg-metrics">
+    <span>90.2-97.4km</span><span>GPX 87.35-94.33</span><span>D+ 215 / D- 187</span>
+    <span>中庸 13.6 min/km</span><span class="hot-only">猛暑着 22:18(DNF)</span><span>関門 21:55</span>
+  </div>
+  <div class="leg-main">
+    <p><b>ピーク</b> 209m <span class="subtle">(GPX区間最大 209m)</span></p>
+    <p><b>水</b> — / <b>今やる</b> 帰る</p>
+    <p><b>マントラ</b> あと少し。岩場は慎重に</p>
+    <p><b>危険</b> 鶴仙渓岩場下降</p>
+  </div>
+</article></div>
+  </section>
+
+  <section class="reference" aria-labelledby="ref-title">
+    <h2 id="ref-title">事前リファレンス</h2>
+    <details open>
+      <summary>標高プロファイル（241点 / AS・CP縦線 / 中庸基準の時間帯シェーディング）</summary>
+      <svg class="profile" viewBox="0 0 960 280" role="img" aria-label="標高プロファイル 241点">
+  <rect x="0" y="0" width="960" height="280" fill="none"/>
+  <rect x="0" y="0" width="268" height="280" class="shade night"/>
+  <rect x="268" y="0" width="170" height="280" class="shade dawn"/>
+  <rect x="438" y="0" width="350" height="280" class="shade heat"/>
+  <rect x="788" y="0" width="172" height="280" class="shade eve"/>
+  <polyline points="10.0,242.9 13.9,238.2 17.8,236.0 21.8,239.7 25.7,242.2 29.6,236.0 33.5,227.4 37.4,226.3 41.3,211.8 45.2,195.0 49.2,196.1 53.1,196.2 57.0,187.1 60.9,181.0 64.8,176.4 68.8,170.8 72.7,176.7 76.6,176.7 80.5,177.2 84.4,172.5 88.3,176.1 92.2,165.5 96.2,163.9 100.1,167.2 104.0,169.6 107.9,171.5 111.8,193.0 115.8,206.8 119.7,217.2 123.6,221.8 127.5,225.3 131.4,228.6 135.3,225.8 139.2,227.8 143.2,227.3 147.1,227.6 151.0,222.5 154.9,221.7 158.8,217.1 162.8,213.5 166.7,210.7 170.6,210.8 174.5,204.0 178.4,196.7 182.3,189.6 186.2,168.0 190.2,156.0 194.1,133.9 198.0,127.0 201.9,118.2 205.8,102.2 209.8,95.8 213.7,97.2 217.6,112.1 221.5,128.3 225.4,124.1 229.3,111.8 233.2,94.5 237.2,89.6 241.1,91.8 245.0,113.0 248.9,136.3 252.8,152.3 256.8,172.2 260.7,188.2 264.6,211.4 268.5,226.5 272.4,226.5 276.3,214.7 280.3,215.0 284.2,217.6 288.1,219.8 292.0,216.9 295.9,218.8 299.8,216.4 303.8,216.8 307.7,217.0 311.6,216.9 315.5,216.6 319.4,216.8 323.3,216.6 327.2,217.6 331.2,217.0 335.1,216.5 339.0,219.8 342.9,217.7 346.8,218.4 350.8,217.3 354.7,218.2 358.6,215.0 362.5,219.1 366.4,216.3 370.3,217.5 374.2,218.7 378.2,216.5 382.1,217.2 386.0,216.4 389.9,213.9 393.8,214.1 397.8,210.9 401.7,209.0 405.6,206.9 409.5,204.3 413.4,201.0 417.3,198.0 421.2,195.2 425.2,191.2 429.1,188.0 433.0,184.2 436.9,178.5 440.8,171.3 444.7,165.2 448.7,158.5 452.6,151.2 456.5,137.3 460.4,116.4 464.3,99.0 468.2,91.4 472.2,73.4 476.1,56.8 480.0,38.4 483.9,19.5 487.8,33.5 491.8,20.9 495.7,10.0 499.6,26.1 503.5,39.9 507.4,55.7 511.3,52.6 515.2,43.0 519.2,55.1 523.1,72.5 527.0,90.1 530.9,88.8 534.8,93.4 538.8,109.1 542.7,103.4 546.6,104.9 550.5,110.1 554.4,115.0 558.3,118.7 562.2,119.1 566.2,120.6 570.1,125.0 574.0,137.6 577.9,146.9 581.8,157.3 585.7,162.6 589.7,175.1 593.6,177.0 597.5,180.6 601.4,184.3 605.3,187.0 609.3,190.7 613.2,192.9 617.1,195.1 621.0,196.3 624.9,197.6 628.8,198.0 632.8,201.5 636.7,199.8 640.6,192.7 644.5,180.7 648.4,174.7 652.3,191.9 656.2,207.7 660.2,214.7 664.1,219.2 668.0,223.4 671.9,225.7 675.8,231.2 679.8,235.8 683.7,236.5 687.6,236.5 691.5,238.0 695.4,239.8 699.3,231.4 703.2,226.9 707.2,220.5 711.1,201.4 715.0,190.3 718.9,185.3 722.8,177.0 726.8,182.4 730.7,185.9 734.6,178.8 738.5,175.7 742.4,176.1 746.3,180.4 750.2,159.7 754.2,169.0 758.1,175.4 762.0,180.2 765.9,174.8 769.8,178.9 773.8,205.9 777.7,223.8 781.6,231.8 785.5,235.4 789.4,238.5 793.3,240.8 797.2,241.4 801.2,244.1 805.1,245.7 809.0,240.9 812.9,240.1 816.8,238.2 820.8,234.3 824.7,225.1 828.6,209.4 832.5,199.4 836.4,175.0 840.3,177.3 844.3,201.7 848.2,199.8 852.1,214.1 856.0,222.4 859.9,236.8 863.8,241.2 867.8,242.8 871.7,246.0 875.6,246.4 879.5,248.3 883.4,250.0 887.3,245.3 891.2,243.7 895.2,241.9 899.1,238.8 903.0,234.5 906.9,227.9 910.8,225.7 914.8,222.4 918.7,225.3 922.6,235.6 926.5,243.5 930.4,245.2 934.3,245.6 938.2,244.7 942.2,243.7 946.1,242.8 950.0,244.3" fill="none" class="profile-line"/>
+  <line x1="10.0" y1="16" x2="10.0" y2="244" class="cp-line"/><text x="10.0" y="254" class="cp-label">START</text><line x1="94.0" y1="16" x2="94.0" y2="244" class="cp-line"/><text x="94.0" y="254" class="cp-label">AS1</text><line x1="171.1" y1="16" x2="171.1" y2="244" class="cp-line"/><text x="171.1" y="254" class="cp-label">AS2</text><line x1="271.5" y1="16" x2="271.5" y2="244" class="cp-line"/><text x="271.5" y="254" class="cp-label">AS3</text><line x1="379.6" y1="16" x2="379.6" y2="244" class="cp-line"/><text x="379.6" y="254" class="cp-label">CP1</text><line x1="442.4" y1="16" x2="442.4" y2="244" class="cp-line"/><text x="442.4" y="254" class="cp-label">AS5</text><line x1="591.0" y1="16" x2="591.0" y2="244" class="cp-line"/><text x="591.0" y="254" class="cp-label">AS6</text><line x1="619.0" y1="16" x2="619.0" y2="244" class="cp-line"/><text x="619.0" y="254" class="cp-label">CP2</text><line x1="683.7" y1="16" x2="683.7" y2="244" class="cp-line"/><text x="683.7" y="254" class="cp-label">AS8</text><line x1="798.5" y1="16" x2="798.5" y2="244" class="cp-line"/><text x="798.5" y="254" class="cp-label">CP3</text><line x1="880.5" y1="16" x2="880.5" y2="244" class="cp-line"/><text x="880.5" y="254" class="cp-label">CP4</text><line x1="950.0" y1="16" x2="950.0" y2="244" class="cp-line"/><text x="950.0" y="254" class="cp-label">FIN</text>
+  <text x="170" y="28" class="peak-label">富士写ヶ岳 930m</text>
+  <text x="510" y="28" class="peak-label">大日山 1367m</text>
+  <text x="700" y="78" class="peak-label">三童子山 539m</text>
+</svg>
+      <div class="legend"><span>藍=夜</span><span>teal=未明</span><span>赤=灼熱</span><span>橙=夕</span></div>
+    </details>
+    <details>
+      <summary>全3シナリオCP表</summary>
+      <div class="table-wrap"><table>
+        <thead><tr><th>地点</th><th>km</th><th>関門</th><th>涼/雨</th><th>中庸</th><th>猛暑中心</th></tr></thead>
+        <tbody><tr><td>START 湯けむり健康村</td><td>0.0</td><td>—</td><td>18:47</td><td>18:47</td><td>18:47</td></tr>
+<tr><td>AS1 刈安山</td><td>8.7</td><td>—</td><td>20:46</td><td>20:46</td><td>20:46</td></tr>
+<tr><td>AS2 大内</td><td>16.7</td><td>—</td><td>22:16</td><td>22:16</td><td>22:16</td></tr>
+<tr><td>AS3 九谷ダム</td><td>27.1</td><td>—</td><td>01:00</td><td>01:00</td><td>01:00</td></tr>
+<tr><td>CP1 九谷親水公園</td><td>38.3</td><td>04:55</td><td>03:03</td><td>03:04</td><td>03:05</td></tr>
+<tr><td>AS5 真砂</td><td>44.8</td><td>—</td><td>04:33</td><td>04:35</td><td>04:38</td></tr>
+<tr><td>AS6 杉ノ木</td><td>60.2</td><td>—</td><td>08:29</td><td>08:40</td><td>08:56</td></tr>
+<tr><td>CP2 県民の森</td><td>63.1</td><td>12:55</td><td>09:04</td><td>09:17</td><td>09:45</td></tr>
+<tr><td>AS8 今立</td><td>69.8</td><td>—</td><td>10:39</td><td>11:23</td><td>12:20</td></tr>
+<tr><td>CP3 滝ヶ原</td><td>81.7</td><td>17:55</td><td>13:26</td><td>15:18</td><td>16:58</td></tr>
+<tr><td>CP4 塔尾</td><td>90.2</td><td>19:55</td><td>15:26</td><td>17:34</td><td>19:21</td></tr>
+<tr><td>FIN 山中座</td><td>97.4</td><td>21:55</td><td>16:57</td><td>19:12</td><td>22:18</td></tr></tbody>
+      </table></div>
+      <p class="subtle">涼22:10(FIN16:57/+4:58 完走) / 中庸24:25(19:12/+2:43 完走) / 猛暑中心27:31(22:18/-0:23 DNF, バンド26:22-28:40)。完走確率は主観値のため表示しない。</p>
+    </details>
+    <details>
+      <summary>補給・ドロップ配分</summary>
+      <div class="ref-grid">
+        <div class="ref-box"><h3>レグ別ジェル</h3><p>S→CP1 22-25 / CP1→CP2 19-23 / CP2→FIN 23-28本。</p></div>
+        <div class="ref-box"><h3>塩</h3><p>各レグ22-38粒。暑熱帯は水・Na・冷却を糖質増量より優先。</p></div>
+        <div class="ref-box"><h3>買い出し</h3><p>ジェル30-34・塩42-54・水3L。</p></div>
+        <div class="ref-box"><h3>ドロップ</h3><p>CP2のみ。スタート携行16-18本 / CP2リストック10-12本。</p></div>
+      </div>
+    </details>
+    <details>
+      <summary>意思決定</summary>
+      <ul class="decision">
+        <li>猛暑モードでは中心DNF。CP2を12:00以降なら関門サバイバルへ。</li>
+        <li>CP3バッファ60分未満ならエイド滞在ゼロ寄せ。下りは転倒しない範囲で走行比率UP。</li>
+        <li>頭痛・ぼんやりは日陰、停止、水かぶり、Na、糖質。時計より熱処理。</li>
+        <li>水が足りない時はペースを落とす。沢水は冷却用途のみ。</li>
+      </ul>
+    </details>
+    <details>
+      <summary>ルート図SVG（背景地図なし / GPXポリライン）</summary>
+      <svg class="route" viewBox="0 0 720 520" role="img" aria-label="ルート図 GPXポリライン">
+  <polyline points="178.4,207.8 183.6,205.1 185.9,201.1 188.3,196.9 190.6,192.8 191.0,188.4 192.5,184.0 192.6,179.6 193.2,175.2 195.3,171.0 197.6,166.9 199.8,162.8 197.1,159.8 191.9,158.7 191.1,162.5 190.1,166.9 190.3,171.3 186.8,174.6 182.1,175.8 181.4,172.6 178.6,170.9 177.6,172.4 177.7,176.5 177.1,178.9 176.8,183.3 176.1,187.5 171.7,190.5 166.8,193.2 162.3,195.9 158.7,199.5 154.9,202.9 151.6,206.3 145.8,206.5 139.9,206.3 134.8,206.7 129.7,204.4 123.8,203.6 119.4,205.2 116.4,209.0 112.4,212.3 107.7,214.8 101.9,215.7 96.8,218.0 93.4,221.7 91.0,225.1 85.0,224.8 80.4,227.2 79.1,231.4 76.3,235.2 73.1,238.8 68.1,240.6 65.6,244.6 61.1,247.7 57.7,250.9 56.1,255.2 55.3,258.9 50.2,256.4 45.2,254.9 39.3,254.9 37.7,251.2 32.3,249.2 26.6,248.8 21.8,251.3 17.7,254.4 14.9,258.0 10.0,259.4 12.2,263.3 13.1,267.5 11.3,271.6 15.6,274.7 17.8,278.8 21.4,282.3 25.5,284.5 30.6,284.1 35.4,284.9 41.3,285.6 47.5,286.3 52.6,287.8 57.0,289.4 57.3,291.9 57.5,293.8 60.8,296.9 66.3,295.5 70.8,293.2 76.4,292.0 82.4,292.8 87.6,291.2 93.3,293.0 95.1,294.0 98.0,296.5 98.3,299.2 97.4,301.9 95.0,304.8 95.3,308.9 99.1,312.3 99.7,316.7 98.2,321.0 96.4,325.2 94.7,329.5 90.0,332.4 86.8,336.2 86.0,340.6 82.7,344.4 82.1,348.7 82.9,353.2 85.4,357.2 84.0,361.5 82.5,365.9 80.7,370.1 78.9,374.3 76.3,378.4 74.9,382.7 74.8,387.1 74.4,391.5 73.2,395.7 73.1,399.4 72.0,403.7 73.2,408.0 73.9,412.4 73.3,416.8 70.8,420.8 69.7,425.2 67.7,429.1 63.7,430.0 64.8,432.8 67.1,436.8 68.1,440.9 70.7,444.6 75.0,447.6 79.1,450.5 84.8,452.3 90.0,454.2 94.8,456.9 99.3,459.2 104.4,461.4 109.4,463.4 115.2,463.6 121.1,463.8 125.3,466.7 128.1,470.5 131.0,474.1 134.7,476.6 138.3,478.9 144.0,478.3 149.7,477.4 154.9,476.4 160.6,475.8 166.2,476.2 170.9,474.7 174.6,471.3 176.1,467.4 179.4,464.6 180.3,461.1 177.8,457.6 176.8,453.5 173.0,450.2 171.3,446.0 170.9,442.1 173.0,438.1 174.0,434.0 174.9,429.8 173.4,425.8 172.0,421.7 169.4,417.9 169.9,414.0 169.8,410.5 167.7,406.4 167.5,402.8 165.8,398.7 164.0,394.7 162.5,391.3 162.3,387.1 162.6,382.9 163.1,378.9 164.3,374.7 166.6,370.9 170.0,367.9 174.5,365.4 175.3,362.1 177.8,358.3 181.4,354.9 182.8,350.8 187.6,348.5 192.5,346.1 195.8,342.7 198.3,339.1 202.8,336.4 206.6,333.2 211.1,330.8 215.1,331.3 219.0,332.8 217.6,329.5 220.1,327.4 226.2,326.4 227.6,325.9 221.7,327.4 217.2,328.4 219.6,332.5 218.7,336.7 215.4,340.4 214.5,344.6 213.0,348.9 213.2,352.6 216.0,349.1 219.4,345.7 221.0,341.4 224.8,338.8 227.7,335.6 233.0,337.2 232.9,340.6 235.9,344.0 237.0,346.1 240.5,347.3 241.1,351.0 241.0,354.1 240.0,356.2 245.4,356.1 247.9,360.1 251.7,363.3 250.4,367.3 250.9,371.2 252.7,375.1 252.2,379.4 251.7,383.3 252.4,387.4 254.7,391.5 256.8,395.6 258.4,396.4 260.6,392.5 257.1,389.2 258.4,384.8 256.9,380.8 256.1,376.5 255.3,372.1 255.6,367.8 256.9,364.3 256.5,360.2 255.1,355.9 255.5,352.5 253.6,350.6 253.7,348.1 249.0,345.5 249.3,341.4 245.7,340.0 245.3,336.8 249.8,334.1 255.0,331.7 259.9,329.4 262.8,328.2 268.5,326.9 271.8,327.4 275.5,330.9 279.2,334.4 282.9,337.9 287.9,339.5 292.1,342.3 296.0,343.7 301.0,345.9 302.0,350.2 304.2,348.8 309.9,347.6 316.0,347.3 320.6,344.3 326.2,344.3 330.9,347.1 334.9,348.9 336.1,347.0 341.5,349.0 347.3,350.5 352.5,348.5 353.9,344.2 357.5,340.6 362.6,338.3 368.7,338.6 374.6,339.8 380.4,340.2 383.7,343.9 385.2,348.1 388.0,352.1 389.8,356.3 394.3,359.3 399.2,362.0 404.6,364.3 410.4,365.5 416.2,366.9 422.2,368.0 422.4,372.4 424.8,376.5 427.4,380.6 428.5,385.0 426.4,389.1 423.7,393.1 424.0,397.5 425.0,402.0 425.1,406.3 426.9,410.4 428.8,414.7 431.4,418.7 431.8,423.1 431.1,427.5 434.0,431.4 436.1,435.4 437.7,439.5 441.7,442.6 445.8,445.6 452.2,445.7 458.3,446.8 463.9,446.5 469.9,447.4 474.5,449.9 479.7,452.4 482.7,456.3 485.0,460.5 485.2,464.9 483.4,469.2 483.2,473.4 483.6,477.6 488.6,479.4 493.9,479.7 499.7,480.7 505.4,482.4 511.8,482.8 516.9,480.6 522.6,478.9 528.5,479.3 534.7,479.2 541.0,479.2 544.9,482.4 546.9,485.9 548.9,489.2 553.0,492.4 555.2,496.1 557.7,498.9 563.2,500.5 568.0,499.7 573.7,499.5 579.7,499.4 585.6,499.3 590.6,501.4 596.0,502.5 601.6,504.1 607.4,505.2 613.1,505.2 618.9,504.9 624.9,504.0 630.5,504.4 636.1,504.6 642.1,504.5 647.5,506.1 652.8,507.4 658.6,507.0 664.3,508.0 669.2,510.0 674.2,508.3 680.0,507.5 684.4,504.8 689.7,502.6 693.0,499.9 698.3,498.5 703.9,497.4 708.3,494.8 710.0,490.8 706.7,488.7 702.6,485.5 701.7,481.5 699.7,477.5 694.6,475.3 689.7,472.9 684.6,471.1 678.6,470.6 672.7,471.8 666.5,472.1 661.1,470.7 655.5,468.7 651.7,465.7 646.3,463.9 643.7,460.2 638.2,459.5 635.3,455.9 635.1,451.7 636.3,447.7 636.7,443.4 636.6,439.2 635.8,435.2 633.6,431.2 630.6,427.5 628.8,423.5 627.9,419.5 629.2,415.9 628.3,411.9 629.7,407.7 627.6,403.8 624.7,400.3 621.2,397.0 617.7,393.7 613.0,391.5 611.8,387.8 609.6,384.1 611.5,380.2 614.7,377.0 618.9,374.6 617.0,370.7 619.3,367.8 620.1,363.8 621.3,359.8 622.9,355.9 624.0,351.8 625.8,347.8 626.3,343.8 628.3,339.8 631.0,335.9 633.3,332.1 631.5,328.1 629.1,324.7 624.4,322.5 623.6,318.4 619.2,315.7 616.9,311.9 613.5,308.5 608.6,307.1 604.2,304.2 598.4,303.4 602.2,306.2 598.4,308.4 594.4,309.4 591.5,307.9 590.0,310.6 590.1,312.3 593.7,313.7 587.9,314.5 581.7,314.7 579.4,314.6 579.3,316.7 576.5,315.6 576.7,311.2 575.0,307.0 574.8,302.7 576.4,298.5 579.5,294.9 582.1,291.0 582.2,286.7 584.3,282.7 584.6,278.3 585.6,274.2 585.2,270.1 580.6,268.0 582.1,263.7 581.2,259.5 579.5,255.3 575.0,252.4 569.3,250.9 565.0,251.0 560.5,254.0 555.4,256.7 552.5,258.1 549.9,261.9 547.5,265.9 545.0,270.0 541.5,273.7 536.0,275.8 532.1,279.4 528.3,282.9 523.0,285.2 516.7,285.5 510.8,286.7 507.1,289.7 510.8,286.3 509.5,282.6 506.8,278.7 503.5,275.1 499.1,272.3 496.5,268.6 496.0,265.2 494.5,262.4 493.4,260.0 491.0,258.2 488.2,256.3 484.7,253.4 482.9,249.4 480.1,245.8 475.0,244.7 474.9,241.6 476.5,237.4 474.6,233.3 472.8,229.1 470.7,225.0 471.5,220.7 472.4,216.4 473.4,212.0 475.7,207.9 479.6,204.4 483.4,201.1 486.0,197.0 486.9,192.6 487.2,188.2 485.7,184.0 482.1,181.2 478.3,177.8 473.6,175.1 467.6,174.7 461.7,173.5 456.8,170.8 451.2,169.0 445.2,168.5 440.7,165.6 435.7,163.2 430.0,161.1 424.7,158.7 418.5,157.8 413.6,156.2 414.4,151.9 417.9,149.3 419.2,148.4 421.2,144.6 426.7,143.7 431.2,140.7 436.1,138.3 441.7,137.2 440.4,133.3 437.9,129.5 435.0,126.2 432.0,123.4 429.6,121.1 428.8,117.6 433.8,115.6 437.1,112.8 441.3,114.0 447.1,112.8 453.0,112.2 458.5,112.0 463.6,113.8 468.8,111.9 474.4,111.9 480.4,111.8 486.2,112.7 491.0,115.1 496.3,116.2 502.0,115.5 505.9,112.6 509.9,110.6 515.7,109.3 521.5,109.4 527.4,110.0 532.7,111.6 538.7,111.7 543.3,114.0 548.0,111.9 551.8,108.8 557.7,108.8 563.0,111.0 568.7,111.7 572.8,109.4 573.4,105.3 573.8,101.0 572.7,96.7 569.2,93.6 568.7,89.5 567.1,85.4 563.3,82.4 562.0,78.3 558.1,75.2 555.3,71.5 551.4,68.9 545.6,67.4 541.8,66.3 540.6,62.9 535.7,62.1 531.1,60.7 527.6,57.8 524.0,55.6 520.2,52.9 515.2,50.1 509.6,48.2 505.0,45.3 500.0,42.5 495.7,39.4 489.8,37.9 486.0,34.5 483.7,30.4 480.0,26.8 475.4,23.7 469.6,22.2 464.0,20.2 458.7,17.9 452.6,17.1 446.4,16.8 440.2,16.2 433.8,16.2 428.8,13.7 425.5,10.0 421.5,10.8 421.5,15.2 422.3,19.6 424.3,23.7 424.0,28.1 424.7,32.5 424.1,37.0 424.9,41.3 426.7,45.5 427.6,49.7 428.1,54.1 426.3,58.0 427.5,62.2 426.3,66.5 427.8,69.1 430.3,69.7 430.7,73.7 428.0,77.3 425.7,80.6 429.6,83.6 427.2,87.4 428.5,91.3 430.1,94.7 432.9,98.1 434.3,100.7 436.5,101.8 434.0,105.6 431.4,108.8 426.5,109.5 421.3,108.5 417.1,106.1 412.3,103.6 406.7,102.3 401.5,101.0 395.8,100.8 391.2,103.3 387.2,106.0 381.3,106.6 377.0,105.4 377.4,103.8 372.8,102.0 367.2,101.3 361.7,99.4 356.8,98.6 352.5,95.4 347.5,92.7 343.0,89.5 338.7,86.3 334.1,83.2 327.8,83.4 321.7,82.4 316.2,80.4 310.0,80.2 304.1,81.6 297.9,81.6 293.0,78.8 289.7,79.7 284.4,81.5 278.5,80.4 274.7,77.2 271.4,78.7 267.2,81.8 262.1,84.3 258.7,88.0 254.7,91.2 253.0,95.5 254.1,99.8 255.3,104.1 256.9,108.4 260.1,112.0 264.5,115.1 265.6,119.3 264.6,123.6 267.3,127.5 269.5,131.2 272.5,131.9 272.4,136.0 269.6,139.7 265.0,141.6 265.4,145.4 260.2,147.1 255.8,149.3 250.8,150.2 248.4,154.2 248.6,158.4 251.6,161.8 249.6,164.7 244.9,166.4 238.9,167.8 232.9,168.5 227.0,167.1 221.0,166.2 215.5,164.0 213.9,165.6 214.1,169.7 215.0,173.1 215.5,176.9 213.0,180.7 212.4,184.8 209.7,188.3 203.7,188.4 199.3,191.2 195.7,194.7 195.5,197.7 192.4,197.1 193.8,192.8 196.8,189.0 198.6,184.7 199.8,180.4 201.2,176.2" fill="none" class="route-line"/>
+  <circle cx="178.4" cy="207.8" r="4" class="route-dot"><title>START 湯けむり健康村</title></circle><circle cx="19.7" cy="252.8" r="4" class="route-dot"><title>AS1 刈安山</title></circle><circle cx="71.0" cy="420.1" r="4" class="route-dot"><title>AS2 大内</title></circle><circle cx="225.0" cy="326.8" r="4" class="route-dot"><title>AS3 九谷ダム</title></circle><circle cx="379.7" cy="339.7" r="4" class="route-dot"><title>CP1 九谷親水公園</title></circle><circle cx="514.8" cy="482.1" r="4" class="route-dot"><title>AS5 真砂</title></circle><circle cx="579.2" cy="316.8" r="4" class="route-dot"><title>AS6 杉ノ木</title></circle><circle cx="556.2" cy="256.3" r="4" class="route-dot"><title>CP2 県民の森</title></circle><circle cx="457.1" cy="170.9" r="4" class="route-dot"><title>AS8 今立</title></circle><circle cx="438.2" cy="16.3" r="4" class="route-dot"><title>CP3 滝ヶ原</title></circle><circle cx="282.6" cy="81.6" r="4" class="route-dot"><title>CP4 塔尾</title></circle><circle cx="201.2" cy="176.2" r="4" class="route-dot"><title>FIN 山中座</title></circle>
+</svg>
+    </details>
+  </section>
+  <footer>
+    参照: kagaspa_cp_schedule_3scenario_20260617.md / race_day_fueling_strategy_2026-06-20.md / GPX vf_26kagaspa100_K_8a0ed0816f.gpx。
+    GPX実測: 45,480点 / 2D 94.33km / ele 37-1367m。
+  </footer>
+</main>
+<script>
+const DASHBOARD_DATA = {"locations": [{"key": "START", "name": "START 湯けむり健康村", "km": 0.0, "gpx": 0.0, "cutoff": "", "mod": "18:47", "hot": "18:47", "cool": "18:47"}, {"key": "AS1", "name": "AS1 刈安山", "km": 8.7, "gpx": 8.43, "cutoff": "", "mod": "20:46", "hot": "20:46", "cool": "20:46"}, {"key": "AS2", "name": "AS2 大内", "km": 16.7, "gpx": 16.17, "cutoff": "", "mod": "22:16", "hot": "22:16", "cool": "22:16"}, {"key": "AS3", "name": "AS3 九谷ダム", "km": 27.1, "gpx": 26.24, "cutoff": "", "mod": "01:00", "hot": "01:00", "cool": "01:00"}, {"key": "CP1", "name": "CP1 九谷親水公園", "km": 38.3, "gpx": 37.09, "cutoff": "04:55", "mod": "03:04", "hot": "03:05", "cool": "03:03"}, {"key": "AS5", "name": "AS5 真砂", "km": 44.8, "gpx": 43.39, "cutoff": "", "mod": "04:35", "hot": "04:38", "cool": "04:33"}, {"key": "AS6", "name": "AS6 杉ノ木", "km": 60.2, "gpx": 58.3, "cutoff": "", "mod": "08:40", "hot": "08:56", "cool": "08:29"}, {"key": "CP2", "name": "CP2 県民の森", "km": 63.1, "gpx": 61.11, "cutoff": "12:55", "mod": "09:17", "hot": "09:45", "cool": "09:04"}, {"key": "AS8", "name": "AS8 今立", "km": 69.8, "gpx": 67.6, "cutoff": "", "mod": "11:23", "hot": "12:20", "cool": "10:39"}, {"key": "CP3", "name": "CP3 滝ヶ原", "km": 81.7, "gpx": 79.12, "cutoff": "17:55", "mod": "15:18", "hot": "16:58", "cool": "13:26"}, {"key": "CP4", "name": "CP4 塔尾", "km": 90.2, "gpx": 87.35, "cutoff": "19:55", "mod": "17:34", "hot": "19:21", "cool": "15:26"}, {"key": "FIN", "name": "FIN 山中座", "km": 97.4, "gpx": 94.33, "cutoff": "21:55", "mod": "19:12", "hot": "22:18", "cool": "16:57"}], "legs": [{"no": 1, "from": "START", "to": "AS1", "label": "START→AS1刈安山", "km_range": "0-8.7", "gpx_range": "0-8.43", "dplus": 659, "dminus": 217, "peak": "520m", "peak_name": "刈安山付近", "pace_mod": "13.7", "arr_mod": "20:46", "arr_hot": "20:46", "cutoff": "", "period": "夜", "water": "START 1.5-2L", "now": "抑えて入る", "mantra": "ウォームアップ。心拍上げない", "danger": "急登林道", "start_km": 0.0, "end_km": 8.7, "dist_km": 8.7, "peak_elev_actual": 520, "peak_after_km": 8.7, "target": {"key": "AS1", "name": "AS1 刈安山", "km": 8.7, "gpx": 8.43, "cutoff": "", "mod": "20:46", "hot": "20:46", "cool": "20:46"}, "margin_mod": "関門なし", "margin_mod_class": "neutral", "margin_hot": "関門なし", "margin_hot_class": "neutral"}, {"no": 2, "from": "AS1", "to": "AS2", "label": "AS1→AS2大内", "km_range": "8.7-16.7", "gpx_range": "8.43-16.17", "dplus": 141, "dminus": 405, "peak": "—", "peak_name": "", "pace_mod": "11.3", "arr_mod": "22:16", "arr_hot": "22:16", "cutoff": "", "period": "夜", "water": "大内 1.5-2L+コーラ", "now": "省エネ", "mantra": "走れる。リズムだけ", "danger": "—", "start_km": 8.7, "end_km": 16.7, "dist_km": 8.0, "peak_elev_actual": 520, "peak_after_km": 0.1, "target": {"key": "AS2", "name": "AS2 大内", "km": 16.7, "gpx": 16.17, "cutoff": "", "mod": "22:16", "hot": "22:16", "cool": "22:16"}, "margin_mod": "関門なし", "margin_mod_class": "neutral", "margin_hot": "関門なし", "margin_hot_class": "neutral"}, {"no": 3, "from": "AS2", "to": "AS3", "label": "AS2→AS3九谷ダム", "km_range": "16.7-27.1", "gpx_range": "16.17-26.24", "dplus": 979, "dminus": 1058, "peak": "富士写ヶ岳 930m", "peak_name": "富士写ヶ岳", "pace_mod": "15.8", "arr_mod": "01:00", "arr_hot": "01:00", "cutoff": "", "period": "深夜", "water": "満タン", "now": "脚を残す", "mantra": "重い。夜の涼を味方に", "danger": "ロープ場/雨で危険", "start_km": 16.7, "end_km": 27.1, "dist_km": 10.4, "peak_elev_actual": 928, "peak_after_km": 6.9, "target": {"key": "AS3", "name": "AS3 九谷ダム", "km": 27.1, "gpx": 26.24, "cutoff": "", "mod": "01:00", "hot": "01:00", "cool": "01:00"}, "margin_mod": "関門なし", "margin_mod_class": "neutral", "margin_hot": "関門なし", "margin_hot_class": "neutral"}, {"no": 4, "from": "AS3", "to": "CP1", "label": "AS3→CP1九谷親水", "km_range": "27.1-38.3", "gpx_range": "26.24-37.09", "dplus": 227, "dminus": 177, "peak": "—", "peak_name": "", "pace_mod": "11.1", "arr_mod": "03:04", "arr_hot": "03:05", "cutoff": "04:55", "period": "深夜", "water": "水/胃/ライト確認", "now": "リズム", "mantra": "走れる林道ロード。追い込まない", "danger": "—", "start_km": 27.1, "end_km": 38.3, "dist_km": 11.2, "peak_elev_actual": 240, "peak_after_km": 0.6, "target": {"key": "CP1", "name": "CP1 九谷親水公園", "km": 38.3, "gpx": 37.09, "cutoff": "04:55", "mod": "03:04", "hot": "03:05", "cool": "03:03"}, "margin_mod": "+1:51", "margin_mod_class": "green", "margin_hot": "+1:50", "margin_hot_class": "green"}, {"no": 5, "from": "CP1", "to": "AS5", "label": "CP1→AS5真砂", "km_range": "38.3-44.8", "gpx_range": "37.09-43.39", "dplus": 272, "dminus": 13, "peak": "高倉山 484m", "peak_name": "高倉山", "pace_mod": "14.0", "arr_mod": "04:35", "arr_hot": "04:38", "cutoff": "", "period": "未明", "water": "真砂 2.5-3L", "now": "一定で登る", "mantra": "高倉山は実は軽い。恐れない。ストック", "danger": "急登だが短い", "start_km": 38.3, "end_km": 44.8, "dist_km": 6.5, "peak_elev_actual": 485, "peak_after_km": 6.5, "target": {"key": "AS5", "name": "AS5 真砂", "km": 44.8, "gpx": 43.39, "cutoff": "", "mod": "04:35", "hot": "04:38", "cool": "04:33"}, "margin_mod": "関門なし", "margin_mod_class": "neutral", "margin_hot": "関門なし", "margin_hot_class": "neutral"}, {"no": 6, "from": "AS5", "to": "AS6", "label": "AS5→AS6杉ノ木", "km_range": "44.8-60.2", "gpx_range": "43.39-58.30", "dplus": 1255, "dminus": 1289, "peak": "大日山 1367m", "peak_name": "大日山", "pace_mod": "15.9", "arr_mod": "08:40", "arr_hot": "08:56", "cutoff": "", "period": "朝→灼熱", "water": "満タン+水かぶり", "now": "標高を稼ぐ", "mantra": "最長クライム。水2.5-3L死守", "danger": "最暑帯入口", "start_km": 44.8, "end_km": 60.2, "dist_km": 15.4, "peak_elev_actual": 1361, "peak_after_km": 5.6, "target": {"key": "AS6", "name": "AS6 杉ノ木", "km": 60.2, "gpx": 58.3, "cutoff": "", "mod": "08:40", "hot": "08:56", "cool": "08:29"}, "margin_mod": "関門なし", "margin_mod_class": "neutral", "margin_hot": "関門なし", "margin_hot_class": "neutral"}, {"no": 7, "from": "AS6", "to": "CP2", "label": "AS6→CP2県民の森", "km_range": "60.2-63.1", "gpx_range": "58.30-61.11", "dplus": 0, "dminus": 113, "peak": "—", "peak_name": "", "pace_mod": "12.8", "arr_mod": "09:17", "arr_hot": "09:45", "cutoff": "12:55", "period": "灼熱", "water": "CP2 2.5L", "now": "突っ込む", "mantra": "CP2は全て。胃を止めない", "danger": "DB唯一地点", "start_km": 60.2, "end_km": 63.1, "dist_km": 2.9, "peak_elev_actual": 450, "peak_after_km": 0, "target": {"key": "CP2", "name": "CP2 県民の森", "km": 63.1, "gpx": 61.11, "cutoff": "12:55", "mod": "09:17", "hot": "09:45", "cool": "09:04"}, "margin_mod": "+3:38", "margin_mod_class": "green", "margin_hot": "+3:10", "margin_hot_class": "green"}, {"no": 8, "from": "CP2", "to": "AS8", "label": "CP2→AS8今立", "km_range": "63.1-69.8", "gpx_range": "61.11-67.60", "dplus": 185, "dminus": 408, "peak": "—", "peak_name": "", "pace_mod": "18.8", "arr_mod": "11:23", "arr_hot": "12:20", "cutoff": "", "period": "灼熱MAX", "water": "満タン・日陰", "now": "水かぶり機械的", "mantra": "リセット完了。完走射程", "danger": "—", "start_km": 63.1, "end_km": 69.8, "dist_km": 6.7, "peak_elev_actual": 479, "peak_after_km": 2.9, "target": {"key": "AS8", "name": "AS8 今立", "km": 69.8, "gpx": 67.6, "cutoff": "", "mod": "11:23", "hot": "12:20", "cool": "10:39"}, "margin_mod": "関門なし", "margin_mod_class": "neutral", "margin_hot": "関門なし", "margin_hot_class": "neutral"}, {"no": 9, "from": "AS8", "to": "CP3", "label": "AS8→CP3滝ヶ原", "km_range": "69.8-81.7", "gpx_range": "67.60-79.12", "dplus": 749, "dminus": 779, "peak": "三童子山 539m", "peak_name": "三童子山", "pace_mod": "19.7", "arr_mod": "15:18", "arr_hot": "16:58", "cutoff": "17:55", "period": "午後灼熱", "water": "満タン", "now": "時計より体", "mantra": "一番きつい時間帯。日陰で座ってでも前進", "danger": "ラスボス三童子山", "start_km": 69.8, "end_km": 81.7, "dist_km": 11.9, "peak_elev_actual": 531, "peak_after_km": 7.0, "target": {"key": "CP3", "name": "CP3 滝ヶ原", "km": 81.7, "gpx": 79.12, "cutoff": "17:55", "mod": "15:18", "hot": "16:58", "cool": "13:26"}, "margin_mod": "+2:37", "margin_mod_class": "green", "margin_hot": "+0:57", "margin_hot_class": "green"}, {"no": 10, "from": "CP3", "to": "CP4", "label": "CP3→CP4塔尾", "km_range": "81.7-90.2", "gpx_range": "79.12-87.35", "dplus": 440, "dminus": 482, "peak": "—", "peak_name": "", "pace_mod": "16.0", "arr_mod": "17:34", "arr_hot": "19:21", "cutoff": "19:55", "period": "午後", "water": "1-1.5L", "now": "攣り/転倒注意", "mantra": "完走ほぼ確定", "danger": "—", "start_km": 81.7, "end_km": 90.2, "dist_km": 8.5, "peak_elev_actual": 455, "peak_after_km": 3.9, "target": {"key": "CP4", "name": "CP4 塔尾", "km": 90.2, "gpx": 87.35, "cutoff": "19:55", "mod": "17:34", "hot": "19:21", "cool": "15:26"}, "margin_mod": "+2:21", "margin_mod_class": "green", "margin_hot": "+0:34", "margin_hot_class": "green"}, {"no": 11, "from": "CP4", "to": "FIN", "label": "CP4→FIN山中座", "km_range": "90.2-97.4", "gpx_range": "87.35-94.33", "dplus": 215, "dminus": 187, "peak": "209m", "peak_name": "鶴仙渓手前", "pace_mod": "13.6", "arr_mod": "19:12", "arr_hot": "22:18(DNF)", "cutoff": "21:55", "period": "夕", "water": "—", "now": "帰る", "mantra": "あと少し。岩場は慎重に", "danger": "鶴仙渓岩場下降", "start_km": 90.2, "end_km": 97.4, "dist_km": 7.2, "peak_elev_actual": 209, "peak_after_km": 3.7, "target": {"key": "FIN", "name": "FIN 山中座", "km": 97.4, "gpx": 94.33, "cutoff": "21:55", "mod": "19:12", "hot": "22:18", "cool": "16:57"}, "margin_mod": "+2:43", "margin_mod_class": "green", "margin_hot": "-0:23", "margin_hot_class": "red"}]};
+
+(function(){
+  const data = DASHBOARD_DATA;
+  const locs = data.locations;
+  const legs = data.legs;
+  let mode = "mod";
+  let current = "START";
+  const $ = (id) => document.getElementById(id);
+  document.body.classList.add("mode-mod");
+
+  function margin(arrival, cutoff){
+    if(!cutoff) return ["関門なし","neutral"];
+    const clean = String(arrival).replace("(DNF)","");
+    const [ah,am] = clean.split(":").map(Number);
+    const [ch,cm] = cutoff.split(":").map(Number);
+    let diff = ch*60+cm - (ah*60+am);
+    if(diff < 0) return [`-${Math.floor(Math.abs(diff)/60)}:${String(Math.abs(diff)%60).padStart(2,"0")}`,"red"];
+    const cls = diff > 30 ? "green" : (diff >= 10 ? "orange" : "red");
+    return [`+${Math.floor(diff/60)}:${String(diff%60).padStart(2,"0")}`, cls];
+  }
+
+  function update(){
+    const idx = locs.findIndex(l => l.key === current);
+    const leg = legs[Math.min(idx, legs.length - 1)];
+    const next = locs[Math.min(idx + 1, locs.length - 1)];
+    document.querySelectorAll(".cp-btn").forEach(b => b.classList.toggle("active", b.dataset.cp === current));
+    document.querySelectorAll(".leg-card").forEach(c => c.classList.toggle("current", c.dataset.leg === current));
+    document.querySelectorAll(".mode-btn").forEach(b => b.classList.toggle("active", b.dataset.mode === mode));
+    document.body.classList.toggle("mode-hot", mode === "hot");
+    document.body.classList.toggle("mode-mod", mode === "mod");
+    $("hot-warning").hidden = mode !== "hot";
+    if(current === "FIN"){
+      $("next-name").textContent = "FIN 到着";
+      $("remain-km").textContent = "0km";
+      $("target-arrival").textContent = mode === "hot" ? "22:18(DNF)" : "19:12";
+      $("cutoff").textContent = "21:55";
+      $("margin").textContent = mode === "hot" ? "-0:23" : "+2:43";
+      $("margin-box").className = "metric margin " + (mode === "hot" ? "red" : "green");
+      $("now-action").textContent = "止まる。体を冷やし、補給し、移動判断へ。";
+      $("remain-dplus").textContent = "0m";
+      $("next-peak").textContent = "完了";
+      $("danger").textContent = "終了後の低体温・脱水";
+      return;
+    }
+    const arrival = mode === "hot" ? leg.arr_hot : leg.arr_mod;
+    const [mText, mClass] = margin(String(arrival).replace("(DNF)",""), leg.cutoff);
+    $("next-name").textContent = next.name;
+    $("remain-km").textContent = `${leg.dist_km.toFixed(1)}km`;
+    $("target-arrival").textContent = arrival;
+    $("cutoff").textContent = leg.cutoff || "関門なし";
+    $("margin").textContent = mText;
+    $("margin-box").className = "metric margin " + mClass;
+    const survival = mode === "hot" && current === "CP2" ? " 猛暑なら中心DNF。滞在最小化、関門サバイバルへ。" : "";
+    $("now-action").textContent = `${leg.now}。${leg.water}。${survival || leg.mantra}`;
+    $("remain-dplus").textContent = `${leg.dplus}m`;
+    const peak = leg.peak_name ? `${leg.peak_name} / ${leg.peak} / あと約${leg.peak_after_km}km` : `区間最大 ${leg.peak_elev_actual}m / あと約${leg.peak_after_km}km`;
+    $("next-peak").textContent = peak;
+    $("danger").textContent = leg.danger;
+    timeHint();
+  }
+
+  function timeHint(){
+    const now = new Date();
+    const isRaceDay = (now.getFullYear() === 2026 && now.getMonth() === 5 && (now.getDate() === 20 || now.getDate() === 21));
+    if(!isRaceDay){ $("time-hint").textContent = "当日のみ補助表示。手動選択が主。"; return; }
+    const dayOffset = now.getDate() === 21 ? 24*60 : 0;
+    const minutes = dayOffset + now.getHours()*60 + now.getMinutes();
+    const start = 18*60 + 47;
+    const elapsed = minutes - start;
+    if(elapsed < 0){ $("time-hint").textContent = "まだスタート前。保存と機内モード確認を優先。"; return; }
+    let guess = "START";
+    for(const loc of locs){
+      const t = loc[mode];
+      if(!t) continue;
+      const clean = String(t).replace("(DNF)","");
+      const [h,m] = clean.split(":").map(Number);
+      const locMin = (h < 18 ? 24*60 : 0) + h*60 + m - start;
+      if(elapsed >= locMin) guess = loc.key;
+    }
+    $("time-hint").textContent = `時刻ベース推定は ${guess} 付近。猛暑・停滞で大きく乖離するため、手動選択を正にする。`;
+  }
+
+  document.querySelectorAll(".cp-btn").forEach(b => b.addEventListener("click", () => { current = b.dataset.cp; update(); }));
+  document.querySelectorAll(".mode-btn").forEach(b => b.addEventListener("click", () => { mode = b.dataset.mode; update(); }));
+  update();
+})();
+
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+}
+</script>
+</body>
+</html>
