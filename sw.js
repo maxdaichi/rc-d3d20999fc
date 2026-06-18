@@ -1,5 +1,5 @@
-const CACHE_NAME = 'kagaspa-dashboard-v2';
-const ASSETS = ['./', './index.html', './manifest.webmanifest'];
+const CACHE_NAME = 'kagaspa-dashboard-v3';
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './kagaspa_race_card_pixel9a.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
   self.skipWaiting();
