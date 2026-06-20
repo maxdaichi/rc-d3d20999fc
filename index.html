@@ -11,8 +11,8 @@
 :root{--bg:#121820;--panel:#19222d;--panel2:#202b38;--line:#354453;--text:#eef4f8;--muted:#aeb8c2;--green:#42d77d;--orange:#ffb545;--red:#ff5f66;--blue:#65a8ff;--teal:#31c7bd;--navy:#24365b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",sans-serif;line-height:1.5;-webkit-text-size-adjust:100%}
 button{font:inherit}.top-note{position:sticky;top:0;z-index:5;background:#0d1117;color:#d8e1ea;border-bottom:1px solid var(--line);padding:7px 12px;text-align:center;font-size:.78rem}.wrap{max-width:1120px;margin:0 auto;padding:14px 12px 56px}.hero{background:linear-gradient(180deg,#1d2733,#141b24);border:2px solid #435466;border-radius:8px;padding:16px;margin-bottom:18px}.kicker,.subtle{color:var(--muted);font-size:.86rem}.hero h1{font-size:clamp(1.55rem,4.5vw,2.7rem);line-height:1.1;margin:.2rem 0 .5rem;letter-spacing:0}.lead{margin:0 0 14px;color:#d7e0e8;font-weight:700}.mode-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.mode-btn,.cp-btn{min-height:48px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text);font-weight:800}.mode-btn.active,.cp-btn.active{outline:3px solid var(--blue);background:#26384d}.mode-btn[data-mode=hot].active{outline-color:var(--red);background:#40242a}.hot-warning{border:2px solid var(--red);background:rgba(255,95,102,.12);border-radius:8px;padding:10px;font-weight:900;margin-bottom:12px}.select-title{font-size:.92rem;color:var(--muted);margin-bottom:8px}.cp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}@media(max-width:720px){.cp-grid{grid-template-columns:repeat(3,1fr)}}.glance{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;margin:16px 0}.label{display:block;color:var(--muted);font-size:.78rem}.next-name{font-size:clamp(2rem,7vw,4.4rem);font-weight:950;line-height:1.02}.metric{background:#101720;border:1px solid var(--line);border-radius:8px;padding:10px}.metric strong{font-size:clamp(1.25rem,4vw,2.5rem);line-height:1.08}.metric.margin.green{border-color:var(--green);color:var(--green)}.metric.margin.orange{border-color:var(--orange);color:var(--orange)}.metric.margin.red{border-color:var(--red);color:var(--red)}@media(max-width:820px){.glance{grid-template-columns:1fr 1fr}.glance>div:first-child{grid-column:1/-1}}.action-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}.action-card{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:12px}.action-card h2{font-size:1rem;margin:0 0 8px}.immediate{border-color:var(--orange);background:rgba(255,181,69,.10)}.action-card p{margin:0;font-size:1.05rem;font-weight:800}.action-card dl{margin:0}.action-card dt{color:var(--muted);font-size:.78rem}.action-card dd{margin:0 0 6px;font-weight:800}@media(max-width:820px){.action-grid{grid-template-columns:1fr}}h2{letter-spacing:0}.section-guide,.reference{margin-top:24px}.section-guide>h2,.reference>h2{font-size:1.5rem;margin:0 0 4px}.legs{display:grid;gap:10px;margin-top:12px}.leg-card{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:12px}.leg-card.current{border-width:3px;border-color:var(--blue);box-shadow:0 0 0 2px rgba(101,168,255,.25)}.leg-card.night{border-left:7px solid var(--navy)}.leg-card.dawn{border-left:7px solid var(--teal)}.leg-card.heat{border-left:7px solid var(--red)}.leg-card.eve{border-left:7px solid var(--orange)}.leg-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.leg-no{background:#0f151d;border:1px solid var(--line);border-radius:6px;padding:3px 7px;color:var(--muted)}.leg-head h3{font-size:1.15rem;margin:0;flex:1}.period{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--muted)}.spark-wrap{margin:8px 0}.spark{width:100%;height:46px;background:#101720;border-radius:6px}.spark polyline{stroke:#d5e8ff;stroke-width:3}.leg-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.leg-metrics span{background:#101720;border:1px solid var(--line);border-radius:6px;padding:6px;font-size:.82rem}.leg-main p{margin:.45rem 0}@media(max-width:820px){.leg-metrics{grid-template-columns:1fr 1fr}.leg-card.current .leg-head h3{font-size:1.55rem}.leg-card.current .leg-main p{font-size:1.05rem}}body.mode-mod .hot-only{display:none}details{border:1px solid var(--line);background:var(--panel);border-radius:8px;margin:10px 0;padding:10px}summary{cursor:pointer;font-weight:900;font-size:1.05rem}.profile,.route{width:100%;height:auto;margin-top:10px;background:#101720;border-radius:8px}.profile-line{stroke:#f4f7fb;stroke-width:3}.cp-line{stroke:rgba(255,255,255,.35);stroke-width:1}.cp-label{fill:#cbd6df;font-size:11px;text-anchor:middle}.peak-label{fill:#fff;font-size:14px;font-weight:800}.shade{opacity:.22}.shade.night{fill:#24365b}.shade.dawn{fill:#1a7f78}.shade.heat{fill:#b73540}.shade.eve{fill:#c47a28}.legend{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.82rem}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:720px}th,td{border-bottom:1px solid var(--line);padding:8px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:var(--muted);background:#101720}.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.ref-box{background:#101720;border:1px solid var(--line);border-radius:8px;padding:10px}.ref-box h3{margin:0 0 6px}.ref-box p{margin:0}.decision li{margin:.35rem 0}.route-line{stroke:#9fd0ff;stroke-width:3}.route-dot{fill:#ffcf5a;stroke:#111;stroke-width:1.5}footer{color:var(--muted);border-top:1px solid var(--line);margin-top:22px;padding-top:12px;font-size:.8rem}@media(max-width:820px){.ref-grid{grid-template-columns:1fr}.hero{padding:12px}.metric strong{font-size:1.4rem}}
-.shot-card{width:min(100%,540px);margin:0 auto 18px;background:#101821;border:2px solid #d6e2ec;border-radius:8px;color:#f6fbff;box-shadow:0 10px 28px rgba(0,0,0,.28);overflow:hidden;line-height:1.18}.shot-caption{background:#dce9f3;color:#10202d;font-size:.82rem;font-weight:900;padding:5px 10px}.shot-header{padding:8px 10px 7px;background:#172434;border-bottom:1px solid #415263}.shot-header h2{font-size:1.22rem;line-height:1.05;margin:0 0 3px;font-weight:950}.shot-header p{margin:0;color:#d7e7f5;font-size:.78rem;font-weight:800}.shot-table{padding:6px 7px 0}.shot-grid-head{display:grid;grid-template-columns:minmax(0,1fr) 38px 45px 45px 72px;gap:4px;color:#b8c9d6;font-size:.68rem;font-weight:900;padding:0 3px 3px 11px}.shot-grid-head span:nth-child(n+2){text-align:center}.shot-row{position:relative;display:grid;grid-template-columns:6px minmax(0,1fr) 38px 45px 45px 72px;gap:4px;align-items:center;min-height:47px;margin-bottom:4px;border:1px solid #334454;background:#17202a;border-radius:7px;overflow:hidden}.shot-row.cp-row{background:#202a35;border-color:#6d8294}.shot-row.cp2-all{background:#2c2224;border-color:#ff6b6b;box-shadow:inset 0 0 0 1px rgba(255,107,107,.45)}.shot-band{height:100%;align-self:stretch}.shot-row.night .shot-band{background:#263a68}.shot-row.dawn .shot-band{background:#1a9288}.shot-row.heat .shot-band{background:#d34747}.shot-row.eve .shot-band{background:#d88a2f}.shot-main{min-width:0;padding:4px 0}.shot-route{font-weight:950;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.shot-num{display:inline-grid;place-items:center;width:17px;height:17px;margin-right:4px;border-radius:4px;background:#0d141c;color:#cad8e3;font-size:.66rem}.shot-focus{margin-top:2px;color:#d6e1ea;font-size:.71rem;font-weight:800;line-height:1.16}.shot-km,.shot-arr,.cutoff{text-align:center;font-weight:950;font-size:.84rem}.shot-km span{display:block;color:#aebdcc;font-size:.55rem;line-height:1}.cutoff.none{color:#6f8292}.cutoff.strong{color:#ff7272;font-size:.89rem}.shot-output{padding-right:5px}.shot-out-head{display:flex;align-items:baseline;justify-content:space-between;font-size:.7rem;font-weight:950}.shot-out-head span{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:50%;background:#e6eef5;color:#162331;font-size:.74rem}.shot-bar{height:9px;margin-top:3px;background:#273340;border-radius:999px;overflow:hidden}.shot-bar span{display:block;height:100%;border-radius:999px}.shot-bar.low span{background:#43d17d}.shot-bar.mid span{background:#ffb545}.shot-bar.high span{background:#ff626a}.shot-footer{border-top:1px solid #415263;margin:3px 7px 0;padding:7px 3px 8px;color:#eef7ff}.shot-footer p{margin:0;font-weight:900;font-size:.78rem;line-height:1.22}.shot-footer .shot-cp2{margin-top:4px;color:#ffeded;background:#84282f;border:1px solid #ff6868;border-radius:6px;padding:4px 6px;text-align:center;font-size:.84rem}.shot-footer .shot-note{margin-top:5px;color:#bfcbd6;font-size:.64rem;font-weight:700}.shot-card footer{border-top:1px solid #415263}
-@media(max-width:420px){.wrap{padding:8px 6px 44px}.shot-card{border-width:1px}.shot-caption{font-size:.72rem;padding:4px 8px}.shot-header{padding:6px 8px}.shot-header h2{font-size:1.05rem}.shot-header p{font-size:.68rem}.shot-table{padding:5px 5px 0}.shot-grid-head{grid-template-columns:minmax(0,1fr) 33px 40px 40px 62px;font-size:.58rem;gap:3px;padding-left:9px}.shot-row{grid-template-columns:5px minmax(0,1fr) 33px 40px 40px 62px;gap:3px;min-height:41px;margin-bottom:3px}.shot-route{font-size:.74rem}.shot-focus{font-size:.62rem}.shot-km,.shot-arr,.cutoff{font-size:.72rem}.cutoff.strong{font-size:.76rem}.shot-out-head{font-size:.6rem}.shot-out-head span{min-width:17px;height:17px;font-size:.64rem}.shot-bar{height:8px}.shot-footer p{font-size:.68rem}.shot-footer .shot-cp2{font-size:.73rem;padding:3px 5px}.shot-footer .shot-note{font-size:.57rem}}
+.shot-card{width:min(100%,540px);margin:0 auto 18px;background:#101821;border:2px solid #d6e2ec;border-radius:8px;color:#f6fbff;box-shadow:0 10px 28px rgba(0,0,0,.28);overflow:hidden;line-height:1.18}.shot-weather{background:#123447;border-bottom:1px solid #4bb6bd;color:#f7fbff;padding:7px 10px 6px}.shot-weather b{display:block;font-size:.75rem;line-height:1.15}.shot-weather span{display:block;margin-top:3px;color:#d8eef0;font-size:.7rem;font-weight:900;line-height:1.15}.shot-caption{background:#dce9f3;color:#10202d;font-size:.78rem;font-weight:900;padding:4px 10px}.shot-header{padding:8px 10px 7px;background:#172434;border-bottom:1px solid #415263}.shot-header h2{font-size:1.18rem;line-height:1.05;margin:0 0 3px;font-weight:950}.shot-header p{margin:0;color:#d7e7f5;font-size:.72rem;font-weight:800}.shot-table{padding:6px 7px 0}.shot-grid-head{display:grid;grid-template-columns:minmax(0,1fr) 38px 45px 45px 72px;gap:4px;color:#b8c9d6;font-size:.68rem;font-weight:900;padding:0 3px 3px 11px}.shot-grid-head span:nth-child(n+2){text-align:center}.shot-row{position:relative;display:grid;grid-template-columns:6px minmax(0,1fr) 38px 45px 45px 72px;gap:4px;align-items:center;min-height:47px;margin-bottom:4px;border:1px solid #334454;background:#17202a;border-radius:7px;overflow:hidden}.shot-row.cp-row{background:#202a35;border-color:#6d8294}.shot-row.cp2-all{background:#253941;border-color:#4bb6bd;box-shadow:inset 0 0 0 1px rgba(75,182,189,.46)}.shot-band{height:100%;align-self:stretch}.shot-row.night .shot-band{background:#263a68}.shot-row.dawn .shot-band{background:#1a9288}.shot-row.morning .shot-band{background:#4bb6bd}.shot-row.heat .shot-band{background:#4bb6bd}.shot-row.eve .shot-band{background:#d88a2f}.shot-main{min-width:0;padding:4px 0}.shot-route{font-weight:950;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.shot-num{display:inline-grid;place-items:center;width:17px;height:17px;margin-right:4px;border-radius:4px;background:#0d141c;color:#cad8e3;font-size:.66rem}.shot-focus{margin-top:2px;color:#d6e1ea;font-size:.71rem;font-weight:800;line-height:1.16}.shot-km,.shot-arr,.cutoff{text-align:center;font-weight:950;font-size:.84rem}.shot-km span{display:block;color:#aebdcc;font-size:.55rem;line-height:1}.cutoff.none{color:#6f8292}.cutoff.strong{color:#ffb545;font-size:.89rem}.shot-output{padding-right:5px}.shot-out-head{display:flex;align-items:baseline;justify-content:space-between;font-size:.7rem;font-weight:950}.shot-out-head span{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:50%;background:#e6eef5;color:#162331;font-size:.74rem}.shot-bar{height:9px;margin-top:3px;background:#273340;border-radius:999px;overflow:hidden}.shot-bar span{display:block;height:100%;border-radius:999px}.shot-bar.low span{background:#43d17d}.shot-bar.mid span{background:#ffb545}.shot-bar.high span{background:#4bb6bd}.shot-footer{border-top:1px solid #415263;margin:3px 7px 0;padding:7px 3px 8px;color:#eef7ff}.shot-footer p{margin:0;font-weight:900;font-size:.69rem;line-height:1.2}.shot-footer .shot-cp2{margin-top:4px;color:#fff8e6;background:#594019;border:1px solid #ffb545;border-radius:6px;padding:4px 6px;text-align:center;font-size:.78rem}.shot-footer .shot-note{margin-top:5px;color:#bfcbd6;font-size:.6rem;font-weight:700}.shot-card footer{border-top:1px solid #415263}
+@media(max-width:420px){.wrap{padding:8px 6px 44px}.shot-card{border-width:1px}.shot-weather{padding:5px 8px}.shot-weather b{font-size:.65rem}.shot-weather span{font-size:.61rem}.shot-caption{font-size:.68rem;padding:3px 8px}.shot-header{padding:6px 8px}.shot-header h2{font-size:.98rem}.shot-header p{font-size:.58rem}.shot-table{padding:5px 5px 0}.shot-grid-head{grid-template-columns:minmax(0,1fr) 33px 40px 40px 62px;font-size:.58rem;gap:3px;padding-left:9px}.shot-row{grid-template-columns:5px minmax(0,1fr) 33px 40px 40px 62px;gap:3px;min-height:41px;margin-bottom:3px}.shot-route{font-size:.74rem}.shot-focus{font-size:.62rem}.shot-km,.shot-arr,.cutoff{font-size:.72rem}.cutoff.strong{font-size:.76rem}.shot-out-head{font-size:.6rem}.shot-out-head span{min-width:17px;height:17px;font-size:.64rem}.shot-bar{height:8px}.shot-footer p{font-size:.58rem}.shot-footer .shot-cp2{font-size:.68rem;padding:3px 5px}.shot-footer .shot-note{font-size:.52rem}}
 
 </style>
 </head>
@@ -27,10 +27,11 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
 <header class="top-note">レース前にスマホ保存→Safari/Chromeで開く→機内モードで開けるか検証</header>
 <main class="wrap">
   <section id="shot-card" class="shot-card" aria-labelledby="shot-title">
+    <div class="shot-weather"><b>☔ 当日予報 雨/最高25-26℃/湿度90%/降水90→70%(加賀 6/20-21)</b><span>2025年型の猛暑なし＝完走濃厚。敵は雨・冷え・滑り・マメ</span></div>
     <div class="shot-caption">📸 この枠をスクショ→ホーム画面用に</div>
     <header class="shot-header">
-      <h2 id="shot-title">KAGA SPA 100K ペース表</h2>
-      <p>W2≈18:47スタート ／ 目標FIN 19:12（経過24:25） ／ 制限27h(関門21:55)</p>
+      <h2 id="shot-title">KAGA SPA 100K ペース表（雨/涼）</h2>
+      <p>W2≈18:47 ／ 目標FIN 16:57(経過22:10) ／ 全関門 余裕1:52〜4:58 ／ 制限27h</p>
     </header>
     <div class="shot-table" role="table" aria-label="エイド予定表">
       <div class="shot-grid-head" role="row">
@@ -40,7 +41,7 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">1</span>START→AS1 刈安山</div>
-        <div class="shot-focus">抑えて入る・心拍上げない</div>
+        <div class="shot-focus">抑えて入る・レイン判断・濡れで冷やさない</div>
       </div>
       <div class="shot-km">8.7<span>km</span></div>
       <div class="shot-arr">20:46</div>
@@ -68,7 +69,7 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">3</span>AS2→AS3 九谷ダム</div>
-        <div class="shot-focus">富士写は重い・登りは歩き脚を売らない</div>
+        <div class="shot-focus">富士写ヶ岳ロープ場は雨で滑る・慎重に脚を売らない</div>
       </div>
       <div class="shot-km">27.1<span>km</span></div>
       <div class="shot-arr">01:00</div>
@@ -85,7 +86,7 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
         <div class="shot-focus">走れる林道・追い込まない</div>
       </div>
       <div class="shot-km">38.3<span>km</span></div>
-      <div class="shot-arr">03:04</div>
+      <div class="shot-arr">03:03</div>
       <div class=" cutoff strong">04:55</div>
       <div class="shot-output">
         <div class="shot-out-head"><b>6/10</b><span>巡</span></div>
@@ -96,69 +97,69 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">5</span>CP1→AS5 真砂</div>
-        <div class="shot-focus">高倉山は実は軽い・一定で登る</div>
+        <div class="shot-focus">高倉山は軽い・一定で登る</div>
       </div>
       <div class="shot-km">44.8<span>km</span></div>
-      <div class="shot-arr">04:35</div>
+      <div class="shot-arr">04:33</div>
       <div class=" cutoff none">—</div>
       <div class="shot-output">
         <div class="shot-out-head"><b>7/10</b><span>勝</span></div>
         <div class="shot-bar mid"><span style="width:70%"></span></div>
       </div>
     </div>
-<div class="shot-row heat">
+<div class="shot-row dawn">
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">6</span>AS5→AS6 杉ノ木</div>
-        <div class="shot-focus">大日山=温存脚を使う・灼熱前に登り切る</div>
+        <div class="shot-focus">大日山稜線は雨で冷える・防寒/レイン・水は適量</div>
       </div>
       <div class="shot-km">60.2<span>km</span></div>
-      <div class="shot-arr">08:40</div>
+      <div class="shot-arr">08:29</div>
       <div class=" cutoff none">—</div>
       <div class="shot-output">
         <div class="shot-out-head"><b>7/10</b><span>勝</span></div>
         <div class="shot-bar mid"><span style="width:70%"></span></div>
       </div>
     </div>
-<div class="shot-row heat cp-row cp2-all">
+<div class="shot-row morning cp-row cp2-all">
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">7</span>AS6→CP2 県民の森</div>
-        <div class="shot-focus">CP2は全て・胃を止めず突っ込む</div>
+        <div class="shot-focus">CP2は全て・濡れリセット/替えソックス</div>
       </div>
       <div class="shot-km">63.1<span>km</span></div>
-      <div class="shot-arr">09:17</div>
+      <div class="shot-arr">09:04</div>
       <div class=" cutoff strong">12:55</div>
       <div class="shot-output">
-        <div class="shot-out-head"><b>8/10</b><span>勝</span></div>
-        <div class="shot-bar high"><span style="width:80%"></span></div>
+        <div class="shot-out-head"><b>7/10</b><span>勝</span></div>
+        <div class="shot-bar mid"><span style="width:70%"></span></div>
       </div>
     </div>
-<div class="shot-row heat">
+<div class="shot-row morning">
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">8</span>CP2→AS8 今立</div>
-        <div class="shot-focus">リセット後は淡々・攻めない</div>
+        <div class="shot-focus">涼しく動ける・淡々と</div>
       </div>
       <div class="shot-km">69.8<span>km</span></div>
-      <div class="shot-arr">11:23</div>
+      <div class="shot-arr">10:39</div>
       <div class=" cutoff none">—</div>
       <div class="shot-output">
-        <div class="shot-out-head"><b>6/10</b><span>生</span></div>
+        <div class="shot-out-head"><b>6/10</b><span>巡</span></div>
         <div class="shot-bar mid"><span style="width:60%"></span></div>
       </div>
     </div>
-<div class="shot-row heat cp-row">
+<div class="shot-row eve cp-row">
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">9</span>AS8→CP3 滝ヶ原</div>
-        <div class="shot-focus">一番きつい時間帯・歩いてでも前進</div>
+        <div class="shot-focus">三童子山・雨の下りは滑る・慎重に</div>
       </div>
       <div class="shot-km">81.7<span>km</span></div>
-      <div class="shot-arr">15:18</div>
+      <div class="shot-arr">13:26</div>
       <div class=" cutoff strong">17:55</div>
       <div class="shot-output">
-        <div class="shot-out-head"><b>6/10</b><span>生</span></div>
+        <div class="shot-out-head"><b>6/10</b><span>守</span></div>
         <div class="shot-bar mid"><span style="width:60%"></span></div>
       </div>
     </div>
@@ -166,10 +167,10 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">10</span>CP3→CP4 塔尾</div>
-        <div class="shot-focus">完走確定・攣り/転倒回避</div>
+        <div class="shot-focus">完走射程・転倒/マメ注意</div>
       </div>
       <div class="shot-km">90.2<span>km</span></div>
-      <div class="shot-arr">17:34</div>
+      <div class="shot-arr">15:26</div>
       <div class=" cutoff strong">19:55</div>
       <div class="shot-output">
         <div class="shot-out-head"><b>5/10</b><span>守</span></div>
@@ -180,10 +181,10 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
       <div class="shot-band" aria-hidden="true"></div>
       <div class="shot-main">
         <div class="shot-route"><span class="shot-num">11</span>CP4→FIN 山中座</div>
-        <div class="shot-focus">鶴仙渓は慎重・残りを出し切る</div>
+        <div class="shot-focus">鶴仙渓の濡れ岩場は転ばない・出し切り</div>
       </div>
       <div class="shot-km">97.4<span>km</span></div>
-      <div class="shot-arr">19:12</div>
+      <div class="shot-arr">16:57</div>
       <div class=" cutoff strong">21:55</div>
       <div class="shot-output">
         <div class="shot-out-head"><b>7/10</b><span>出</span></div>
@@ -192,9 +193,9 @@ Network-free assets only; CSS, SVG, and JavaScript are embedded in the document.
     </div>
     </div>
     <footer class="shot-footer">
-      <p>前半は6割で脚を貯金 → 大日山〜CP2で使う → 午後灼熱(三童子山)は“生存” → CP4以降は守り→最後の下りで出し切り</p>
-      <p class="shot-cp2">CP2(63km/関門12:55)を出れば完走射程＝ここが全て</p>
-      <p class="shot-note">中庸=最有力の目安。猛暑日は各到着が遅れ、CP2が12:00以降なら関門サバイバルへ。W2の分は推定</p>
+      <p>猛暑なし＝完走濃厚。前半温存→大日山〜CP2で使う→午後は涼しく淡々→最後は出し切り。<b>敵は雨・冷え・滑り・マメ</b>：レインで体温維持／ロープ場・三童子山・鶴仙渓の濡れ下りは転ばない／CP2で濡れリセット＆替えソックス。</p>
+      <p class="shot-cp2">CP2(関門12:55)を出れば完走射程＝ここが全て</p>
+      <p class="shot-note">予報=tenki.jp 加賀 6/20-21。全関門に余裕大。W2分は推定</p>
     </footer>
   </section>
 
